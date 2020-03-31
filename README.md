@@ -1,6 +1,8 @@
-# Roku Flashback
+# Roku Flashback (Media Accessibility)
 
-<img src="/images/roku.svg" alt="Roku Flashback Logo" width="200">
+<img src="/images/flashback.svg" alt="Roku Flashback Logo" width="200">
+
+This version is simply to test implementing accessibility functionality for the Roku Flashback app.
 
 ## Retro Streaming Service
 
@@ -14,16 +16,12 @@ respectively.
 * **HTML5**
 * **SASS/CSS3**
 * **JavaScript**
-* **PHP**
-* **Vue.js**
-* **MySQL**
 * **Gulp**
 
 ## Authors
 
-* **Kayla** - *Designer* - https://github.com/kchang00
-* **Mariam** - *Developer* - https://github.com/mariamkhalifa
+* **Kayla** - *Designer and Developer* - https://github.com/kchang00
 
 ## Acknowledgment/References
 
-None of the entertainment assets are our own (including TV cover art, album art, videos, audio).
+None of the entertainment assets are our own (including TV cover art, album art, videos, and audio).
