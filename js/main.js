@@ -7,11 +7,19 @@
       fullScreenButton = document.querySelector("#fullScreen"),
       timeBar = document.querySelector("#timeBar"),
       volumeBar = document.querySelector("#volumeBar"),
-      videoOverlay = document.querySelector(".videoOverlay");
+      videoOverlay = document.querySelector(".videoOverlay"),
+      videoBtns 			= document.querySelectorAll('.video-btn');
   
-    function loadVideo() {
+    function loadVideo() {      
       video.load();
       video.pause();
+    }
+
+    function swapVideoSrc() {
+      // get media title from the class list
+      // can type this.className.split(" ")[1] into the console
+      let targetSrc = this.className.split(" ")[1];
+      video.src = `video/${targetSrc}.mp4`;
     }
   
     //function to displat rewind button when the video ended
@@ -103,6 +111,8 @@
 
     // video event listeners
     window.addEventListener("load", loadVideo);
+
+    videoBtns.forEach(btn => btn.addEventListener("click", swapVideoSrc));
   
     // playing and pausing the video
     playButton.addEventListener("click", playPause);

@@ -18,8 +18,16 @@
       <a class="roku-flashback-logo" tabindex="0"><img src="images/roku.svg" alt="Roku Logo"><img src="images/flashback.svg" alt="Flashback logo"></a>
       <button class="burger"><img src="images/burger.svg" alt="Hamburger Menu"></button>
     </header>
+    <section class="media-select">
+      <h2>Recommended Series for You</h2>
+      <section class="media-btns">
+        <h3 class="hidden">Media Buttons</h3>
+        <button class="video-btn sound_of_music"><img src="images/sound_of_music.jpg" alt="Sound of Music Box Cover"></button>
+        <button class="video-btn honeymooners"><img src="images/honeymooners.jpg" alt="Honeymooners Box Cover"></button>
+      </section>
+    </section>
     <section class="video">
-      <h2 class="hidden">Honeymooners (TV Show)</h2>
+      <h2 class="hidden">Video Player</h2>
       <button class="videoOverlay">
         <img src="images/ctrl_play.svg" alt="Play Button"/>
       </button>
@@ -54,6 +62,21 @@
         </button>
         <button id="subtitles" data-state="subtitles">CC</button>
       </div>
+    </section>
+    <section class="media-select">
+      <h2>Recommended Music for You</h2>
+      <section class="media-btns">
+        <h3 class="hidden">Media Buttons</h3>
+        <button class="audio-btn sound_of_silence"><img src="images/sound_of_silence.jpg" alt="Sound of Silence Album Cover"></button>
+      </section>
+    </section>
+    <section class="audio">
+      <h2 class="hidden">Audio Player</h2>
+      <audio controls>
+        <source src="audio/sound_of_silence.mp3" type="audio/mp3">
+        <!-- <source src="audio/sound_of_silence.ogg" type="audio/ogg"> -->
+        <p>Your browser doesn't support HTML5 audio. Here is a <a href="viper.mp3">link to the audio</a> instead.</p>
+      </audio>
     </section>
   </main>
 
