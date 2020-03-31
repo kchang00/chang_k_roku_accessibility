@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Roku FlashBack</title>
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <h1 class="hidden">Roku Flashback</h1>
+  <main id="app">
+    <header class="header">
+      <a class="roku-flashback-logo" tabindex="0"><img src="images/roku.svg" alt="Roku Logo"><img src="images/flashback.svg" alt="Flashback logo"></a>
+      <button class="burger"><img src="images/burger.svg" alt="Hamburger Menu"></button>
+    </header>
+    <section class="video">
+      <h2 class="hidden">Honeymooners (TV Show)</h2>
+      <button class="videoOverlay">
+        <img src="images/ctrl_play.svg" alt="Play Button"/>
+      </button>
+      <video tabindex="0" src="video/honeymooners.mp4" muted>
+        <track label="English" kind="subtitles" srclang="en" src="captions/vtt/sintel-en.vtt" default>
+      </video>
+      <!-- video controls -->
+      <div id="videoControls">
+        <input type="range" id="timeBar" value="0"/>
+        <button id="playPause">
+          <img
+            src="images/ctrl_play.svg"
+            alt="Play/Pause Button"
+          />
+        </button>
+        <button id="mute">
+          <img src="images/ctrl_muted.svg" alt="Mute Button"/>
+        </button>
+        <input
+          type="range"
+          id="volumeBar"
+          min="0"
+          max="1"
+          step="0.1"
+          value="0"
+        />
+        <button id="fullScreen">
+          <img
+            src="images/ctrl_expand.svg"
+            alt="Fullscreen Button"
+          />
+        </button>
+        <button id="subtitles" data-state="subtitles">CC</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <h2 class="hidden">Footer</h2>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

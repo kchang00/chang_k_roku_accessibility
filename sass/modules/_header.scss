@@ -1,0 +1,35 @@
+.header {
+    @include row;
+    background-color: $grey;
+    box-shadow: 0 3px 20px rgba($color: black, $alpha: .2);
+    position: relative;
+    z-index: 10;
+    align-items: center;
+}
+
+.roku-flashback-logo {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    img:first-child {
+        width: 80px;
+        margin-right: 10px;
+    }
+    img:last-child {
+        width: 180px;
+    }
+}
+
+.burger {
+    @include col;
+    align-items: center;
+    justify-content: center;
+    background-color: $black;
+    order: -1;
+    cursor: pointer;
+    margin-right: 10px;
+    img {
+        margin: 30px 20px;
+        transition: all ease .5s;
+    }
+}
