@@ -1,0 +1,106 @@
+//sass --watch sass:css --style compressed
+
+@import 'modules/_vars';
+@import 'modules/_header';
+@import 'modules/_video_controls';
+
+
+html, body {
+    height: 100%;
+}
+
+img, embed, object, video {
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a, button {
+    border: none;
+    background: transparent;
+    &:hover, &:focus {
+        cursor: pointer;
+    }
+}
+
+body {
+    background-color: $grey;;
+    color: white;
+    font-family: $copy-font;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 1.7em;
+}
+
+h2 {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 1.1em;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.video {
+    position: relative;
+    display: flex;
+    // align-items: center;
+    // justify-content: center;
+    background: #232323;
+    cursor: pointer;
+    align-items: flex-end;
+    margin: 2rem;
+  
+    video {
+      margin: 0 auto;
+    }
+  }
+  
+  .videoOverlay {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    // background: url(../images/video_overlay_small.jpg) no-repeat center center;
+  
+    img {
+      height: 100px;
+      transition: all 0.3s ease;
+      opacity: 0.5;
+    }
+    &:hover {
+      img {
+        opacity: 1;
+      }
+    }
+    &:active {
+      img {
+        opacity: 1;
+      }
+    }
+  }
+
+  @media screen and (min-width: 964px) {
+    .video {
+        video {
+            height: 80vh;
+        }
+    }
+  }
