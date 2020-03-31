@@ -28,11 +28,12 @@
     </section>
     <section class="video">
       <h2 class="hidden">Video Player</h2>
-      <button class="videoOverlay">
+      <button class="videoOverlay" style="display: block; background-image: url('images/sound_of_music.jpg');">
         <img src="images/ctrl_play.svg" alt="Play Button"/>
       </button>
-      <video tabindex="0" src="video/honeymooners.mp4" muted>
-        <track label="English" kind="subtitles" srclang="en" src="captions/vtt/sintel-en.vtt" default>
+      <video tabindex="0" src="video/sound_of_music.mp4" muted>
+        <track class="subtitles" label="English" kind="subtitles" srclang="en" src="captions/sound_of_music.vtt" default>
+        <p>Your browser doesn't support this audio format.</p>
       </video>
       <!-- video controls -->
       <div id="videoControls">
@@ -43,6 +44,7 @@
             alt="Play/Pause Button"
           />
         </button>
+        <div id="time"><span id="currentTime">0:00</span>/<span id="duration">0:00</span></div>
         <button id="mute">
           <img src="images/ctrl_muted.svg" alt="Mute Button"/>
         </button>
@@ -75,8 +77,50 @@
       <audio controls>
         <source src="audio/sound_of_silence.mp3" type="audio/mp3">
         <!-- <source src="audio/sound_of_silence.ogg" type="audio/ogg"> -->
-        <p>Your browser doesn't support HTML5 audio. Here is a <a href="viper.mp3">link to the audio</a> instead.</p>
+        <p>Your browser doesn't support this audio format.</p>
       </audio>
+      <section class="transcript">
+        <h3 class="hidden">Transcript</h3>
+        <p>Hello darkness, my old friend
+          I've come to talk with you again
+          Because a vision softly creeping
+          Left its seeds while I was sleeping
+          And the vision that was planted in my brain
+          Still remains
+          Within the sound of silence
+          In restless dreams I walked alone
+          Narrow streets of cobblestone
+          'Neath the halo of a street lamp
+          I turned my collar to the cold and damp
+          When my eyes were stabbed by the flash of a neon light
+          That split the night
+          And touched the sound of silence
+          And in the naked light I saw
+          Ten thousand people, maybe more
+          People talking without speaking
+          People hearing without listening
+          People writing songs that voices never share
+          And no one dare
+          Disturb the sound of silence
+          "Fools" said I, "You do not know
+          Silence like a cancer grows
+          Hear my words that I might teach you
+          Take my arms that I might reach you"
+          But my words like silent raindrops fell
+          And echoed
+          In the wells of silence
+          And the people bowed and prayed
+          To the neon god they made
+          And the sign flashed out its warning
+          In the words that it was forming
+          And the sign said, "The words of the prophets
+          Are written on the subway walls
+          And tenement halls"
+          And whisper'd in the sounds of silence
+          Source: LyricFind
+          Songwriters: Paul Simon
+          The Sound of Silence lyrics © Universal Music Publishing Group</p>
+      </section>
     </section>
   </main>
 

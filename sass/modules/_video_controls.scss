@@ -7,24 +7,29 @@
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
   justify-content: space-around;
   flex-wrap: wrap;
-  opacity: 1;
+  opacity: 0;
   transition: all 0.3s ease;
   padding-bottom: 10px;
 
   #playPause,
   #fullScreen,
-  #mute {
+  #mute{
     img {
-      height: 35px;
+      height: 1rem;
     }
   }
 }
 
+#time{
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
 #subtitles {
-    height:35px;
+    height:1.3rem;
     text-indent:0;
-    font-size:16px;
-    font-size:1rem;
+    font-size:0.6rem;
     font-weight:bold;
     color:white;
     border: 2px solid white;
@@ -37,6 +42,10 @@
 
 .video:focus > #videoControls {
   opacity: 1;
+}
+
+#volumeBar{
+  max-width: 10%;
 }
 
 #timeBar {
@@ -131,5 +140,27 @@
   &:focus::-ms-fill-upper {
     background: #ffffff;
   }
+
+}
+
+@media screen and (min-width: 964px) {
+  #videoControls{
+    #playPause,
+    #fullScreen,
+    #mute{
+      img {
+        height: 35px;
+      }
+    }
+  }
+
+  #subtitles {
+    height:35px;
+    font-size:1rem;
+}
+
+#time{
+  font-size: 1rem;
+}
 
 }

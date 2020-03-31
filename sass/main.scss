@@ -3,6 +3,7 @@
 @import 'modules/_vars';
 @import 'modules/_header';
 @import 'modules/_video_controls';
+@import 'modules/_subtitles';
 
 
 html, body {
@@ -57,10 +58,10 @@ h3 {
   display: flex;
   // align-items: center;
   // justify-content: center;
-  background: #232323;
+  background: black;
   cursor: pointer;
   align-items: flex-end;
-  margin: 2rem;
+  margin: 1rem;
 
   video {
     margin: 0 auto;
@@ -78,6 +79,9 @@ h3 {
   justify-content: center;
   align-items: center;
   width: 100%;
+  background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 
   img {
     height: 100px;
@@ -97,7 +101,7 @@ h3 {
 }
 
 .media-select {
-  margin: 50px;
+  margin: 3rem 1rem;
 
   h2 {
     margin-bottom: 50px;
@@ -113,7 +117,13 @@ h3 {
 }
 
 @media screen and (min-width: 964px) {
+
+  .media-select {
+    margin: 5rem;
+  }
+
   .video {
+    margin: 5rem;
       video {
           height: 80vh;
       }
