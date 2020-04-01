@@ -3,6 +3,7 @@
 @import 'modules/_vars';
 @import 'modules/_header';
 @import 'modules/_video_controls';
+@import 'modules/_audio_controls';
 @import 'modules/_subtitles';
 
 
@@ -114,6 +115,13 @@ h3 {
       max-width: 100px;
     }
   }
+}
+
+footer {
+  margin-top: 5rem;
+  text-align: center;
+  padding: 20px;
+  background: $black;
 }
 
 @media screen and (min-width: 964px) {

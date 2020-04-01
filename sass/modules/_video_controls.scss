@@ -1,5 +1,4 @@
 #videoControls {
-  outline: none;
   display: flex;
   position: absolute;
   align-self: flex-end;
@@ -11,16 +10,16 @@
   transition: all 0.3s ease;
   padding-bottom: 10px;
 
-  #playPause,
+  #videoPlayPause,
   #fullScreen,
-  #mute{
+  #videoMute{
     img {
       height: 1rem;
     }
   }
 }
 
-#time{
+#videoTime{
   display: flex;
   align-items: center;
   font-size: 0.8rem;
@@ -48,7 +47,7 @@
   max-width: 10%;
 }
 
-#timeBar {
+#videoTimeBar {
   -webkit-appearance: none;
   width: 100%;
   margin: 1px 0px 15px 0px;
@@ -145,9 +144,9 @@
 
 @media screen and (min-width: 964px) {
   #videoControls{
-    #playPause,
+    #videoPlayPause,
     #fullScreen,
-    #mute{
+    #videoMute{
       img {
         height: 35px;
       }
@@ -159,7 +158,7 @@
     font-size:1rem;
 }
 
-#time{
+#videoTime{
   font-size: 1rem;
 }
 
