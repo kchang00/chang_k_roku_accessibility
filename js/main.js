@@ -3,23 +3,43 @@
 
   const video           = document.querySelector("video"),
     videoContainer      = document.querySelector(".video"),
-    playButton          = document.querySelector("#playPause"),
-    muteButton          = document.querySelector("#mute"),
+    videoPlayButton     = document.querySelector("#videoPlayPause"),
+    videoMuteButton     = document.querySelector("#videoMute"),
     fullScreenButton    = document.querySelector("#fullScreen"),
     subtitlesButton     = document.querySelector("#subtitles"),
-    timeBar             = document.querySelector("#timeBar"),
-    volumeBar           = document.querySelector("#volumeBar"),
+    videoTimeBar        = document.querySelector("#videoTimeBar"),
+    videoVolumeBar      = document.querySelector("#videoVolumeBar"),
     videoOverlay        = document.querySelector(".videoOverlay"),
     videoBtns 			    = document.querySelectorAll('.video-btn'),
     subtitles           = document.querySelector(".subtitles"),
-    subtitleMenuButtons = [];
+    subtitleMenuButtons = [],
+    audio               = document.querySelector("audio"),
+    audioPlayButton     = document.querySelector("#audioPlayPause"),
+    audioMuteButton     = document.querySelector("#audioMute"),
+    transcriptButton    = document.querySelector('.transcript-btn'),
+    transcript    = document.querySelector('.transcript');
   
   var subtitlesMenu;
+
+  function showHideTranscript(){
+    transcript.classList.toggle('hidden');
+    if (transcript.classList.contains('hidden')){
+      transcriptButton.innerHTML = 'Show Transcript';
+    }else{
+      transcriptButton.innerHTML = 'Hide Transcript';
+    }
+  }
 
   function loadVideo() {      
     video.load();
     video.currentTime = 0;
     video.pause();
+  }
+
+  function loadAudio() {      
+    audio.load();
+    audio.currentTime = 0;
+    audio.pause();
   }
 
   function swapVideoSrc() {
@@ -33,19 +53,23 @@
     videoOverlay.style.backgroundImage = `url(images/${targetSrc}.jpg)`;
   }
 
-  //function to displat rewind button when the video ended
+  //function to display rewind button when the video ended
   video.onended = function() {
-    playButton.getElementsByTagName('img')[0].src = `images/ctrl_rewind.svg`;
+    videoPlayButton.getElementsByTagName('img')[0].src = `images/ctrl_rewind.svg`;
   };
 
-  function playPause() {
+  audio.onended = function() {
+    audioPlayButton.getElementsByTagName('img')[0].src = `images/ctrl_rewind.svg`;
+  };
+
+  function playPauseVideo() {
     if (video.paused == true) {
       videoOverlay.style.display = "none";
       video.play(); // Play the video
-      playButton.getElementsByTagName('img')[0].src = `images/ctrl_pause.svg`; // Update the button text to 'Pause'
+      videoPlayButton.getElementsByTagName('img')[0].src = `images/ctrl_pause.svg`; // Update the button text to 'Pause'
     } else {
       video.pause(); // Pause the video
-      playButton.getElementsByTagName('img')[0].src = `images/ctrl_play.svg`; // Update the button text to 'Play'
+      videoPlayButton.getElementsByTagName('img')[0].src = `images/ctrl_play.svg`; // Update the button text to 'Play'
     }
 
     //rewind the video
@@ -54,28 +78,65 @@
     }
   }
 
-  //mute/unmute function
-  function muteUnmute() {
-    if (video.muted == false) {
-      video.muted = true; // Mute the video
-      volumeBar.value = 0; // Change the volume bar
-      muteButton.getElementsByTagName('img')[0].src = `images/ctrl_muted.svg`; // Change the mute button
+  function playPauseAudio() {
+    if (audio.paused == true) {
+      audio.play(); // Play the audio
+      audioPlayButton.getElementsByTagName('img')[0].src = `images/ctrl_pause.svg`; // Update the button text to 'Pause'
     } else {
-      video.muted = false; // Unmute the video
-      volumeBar.value = video.volume; // Change the volume bar
-      muteButton.getElementsByTagName('img')[0].src = `images/ctrl_unmute.svg`; // Change the mute button
+      audio.pause(); // Pause the video
+      audioPlayButton.getElementsByTagName('img')[0].src = `images/ctrl_play.svg`; // Update the button text to 'Play'
+    }
+
+    //rewind the audio
+    if (audio.onended == true) {
+      audio.play();
     }
   }
 
-  function timeTracker() {
-    var totalTime = video.duration * (timeBar.value / 100); // Calculate the new time
+  //mute/unmute function
+  function muteUnmuteVideo() {
+    if (video.muted == false) {
+      video.muted = true; // Mute the video
+      videoVolumeBar.value = 0; // Change the volume bar
+      videoMuteButton.getElementsByTagName('img')[0].src = `images/ctrl_muted.svg`; // Change the mute button
+    } else {
+      video.muted = false; // Unmute the video
+      videoVolumeBar.value = video.volume; // Change the volume bar
+      videoMuteButton.getElementsByTagName('img')[0].src = `images/ctrl_unmute.svg`; // Change the mute button
+    }
+  }
+
+  function muteUnmuteAudio() {
+    if (audio.muted == false) {
+      audio.muted = true; // Mute the video
+      audioVolumeBar.value = 0; // Change the volume bar
+      audioMuteButton.getElementsByTagName('img')[0].src = `images/ctrl_muted.svg`; // Change the mute button
+    } else {
+      audio.muted = false; // Unmute the video
+      audioVolumeBar.value = video.volume; // Change the volume bar
+      audioMuteButton.getElementsByTagName('img')[0].src = `images/ctrl_unmute.svg`; // Change the mute button
+    }
+  }
+
+  function timeTrackerVideo() {
+    var totalTime = video.duration * (videoTimeBar.value / 100); // Calculate the new time
     video.currentTime = totalTime; // Update the video time
   }
 
+  function timeTrackerAudio() {
+    var totalTime = audio.duration * (audioTimeBar.value / 100); // Calculate the new time
+    audio.currentTime = totalTime; // Update the video time
+  }
+
   // Updates the timeBar slider as the video plays
-  function timeUpdater() {
+  function timeUpdaterVideo() {
     var totalValue = (100 / video.duration) * video.currentTime; // Calculate the slider value
-    timeBar.value = totalValue; // Update the slider value
+    videoTimeBar.value = totalValue; // Update the slider value
+  }
+
+  function timeUpdaterAudio() {
+    var totalValue = (100 / audio.duration) * audio.currentTime; // Calculate the slider value
+    audioTimeBar.value = totalValue; // Update the slider value
   }
 
   function formatTime(s) {
@@ -91,7 +152,7 @@
     var time = video.currentTime;
     var seconds = time.toFixed(2);
     var cleanTime = formatTime(seconds);
-    var currentTime = document.querySelector('#currentTime');
+    var currentTime = document.querySelector('#videoCurrentTime');
 
     // Set the current play value
     currentTime.innerHTML = cleanTime;
@@ -102,9 +163,34 @@
     var duration = video.duration;
     var seconds = duration.toFixed(2);
     var cleanDuration = formatTime(seconds);
-    var durationTime = document.querySelector('#duration');
+    var durationTime = document.querySelector('#videoDuration');
     // Set the video duration
     durationTime.innerHTML = cleanDuration;
+    // set timebar to 0
+    videoTimeBar.value = 0;
+  });
+
+  audio.addEventListener('timeupdate', function() {
+    // Set to minute and seconds
+    var time = audio.currentTime;
+    var seconds = time.toFixed(2);
+    var cleanTime = formatTime(seconds);
+    var currentTime = document.querySelector('#audioCurrentTime');
+
+    // Set the current play value
+    currentTime.innerHTML = cleanTime;
+});
+
+  audio.addEventListener('loadedmetadata', function () {
+    // Set to minute and seconds
+    var duration = audio.duration;
+    var seconds = duration.toFixed(2);
+    var cleanDuration = formatTime(seconds);
+    var durationTime = document.querySelector('#audioDuration');
+    // Set the audio duration
+    durationTime.innerHTML = cleanDuration;
+    // set the timebar to 0
+    audioTimeBar.value = 0;
   });
 
   // Used to pause timeBar when user is dragging handle, DOES NOT control play/pause button
@@ -112,13 +198,28 @@
     video.pause();
   }
 
-  function volumeChange() {
-    video.muted = false; //unmute video
-    video.volume = volumeBar.value; //change volume
-    muteButton.getElementsByTagName('img')[0].src = `images/ctrl_unmute.svg`; //change mute button
+  function audioPause() {
+    audio.pause();
+  }
 
-    if (volumeBar.value == 0) {
-      muteButton.getElementsByTagName('img')[0].src = `images/ctrl_muted.svg`; //change mute button if value = 0
+  function volumeChangeVideo() {
+    video.muted = false; //unmute video
+    video.volume = videoVolumeBar.value; //change volume
+    videoMuteButton.getElementsByTagName('img')[0].src = `images/ctrl_unmute.svg`; //change mute button
+
+    if (videoVolumeBar.value == 0) {
+      videoMuteButton.getElementsByTagName('img')[0].src = `images/ctrl_muted.svg`; //change mute button if value = 0
+    }
+    // Update video volume
+  }
+
+  function volumeChangeAudio() {
+    audio.muted = false; //unmute video
+    audio.volume = audioVolumeBar.value; //change volume
+    audioMuteButton.getElementsByTagName('img')[0].src = `images/ctrl_unmute.svg`; //change mute button
+
+    if (audioVolumeBar.value == 0) {
+      audioMuteButton.getElementsByTagName('img')[0].src = `images/ctrl_muted.svg`; //change mute button if value = 0
     }
     // Update video volume
   }
@@ -202,25 +303,37 @@
     }
   }
 
-  // video event listeners
+  transcriptButton.addEventListener('click', showHideTranscript);
+
+  // media event listeners
   videoBtns.forEach(btn => btn.addEventListener("click", swapVideoSrc));
   window.addEventListener("load", loadVideo);
+  window.addEventListener("load", loadAudio);
 
   // playing and pausing the video
-  playButton.addEventListener("click", playPause);
-  video.addEventListener("click", playPause);
+  videoPlayButton.addEventListener("click", playPauseVideo);
+  video.addEventListener("click", playPauseVideo);
   video.addEventListener("keypress", function(e) {
     if(accessibleClick(event) === true){
-      playPause();
+      playPauseVideo();
     }
   });
-  videoOverlay.addEventListener("click", playPause);
+  videoOverlay.addEventListener("click", playPauseVideo);
+
+  // audio controls
+  audioPlayButton.addEventListener("click", playPauseAudio);
+  audioMuteButton.addEventListener("click", muteUnmuteAudio);
+  audioTimeBar.addEventListener("change", timeTrackerAudio);
+  audio.addEventListener("timeupdate", timeUpdaterAudio);
+  audioTimeBar.addEventListener("mousedown", audioPause);
+  audioTimeBar.addEventListener("mouseup", playPauseAudio);
+  audioVolumeBar.addEventListener("change", volumeChangeAudio);
 
   //other video controls
-  muteButton.addEventListener("click", muteUnmute);
+  videoMuteButton.addEventListener("click", muteUnmuteVideo);
   fullScreenButton.addEventListener("click", fullScreen);
-  timeBar.addEventListener("change", timeTracker);
-  video.addEventListener("timeupdate", timeUpdater);
+  videoTimeBar.addEventListener("change", timeTrackerVideo);
+  video.addEventListener("timeupdate", timeUpdaterVideo);
   subtitlesButton.addEventListener('click', function(e) {
     if (subtitlesMenu) {
       console.log('subtitles button clicked');
@@ -229,9 +342,10 @@
   });
 
   // pauses timebar when user is dragging handle
-  timeBar.addEventListener("mousedown", videoPause);
-  timeBar.addEventListener("mouseup", playPause);
-  volumeBar.addEventListener("change", volumeChange);
+  videoTimeBar.addEventListener("mousedown", videoPause);
+  videoTimeBar.addEventListener("mouseup", playPauseVideo);
+  videoVolumeBar.addEventListener("change", volumeChangeVideo);
+
 })();
   
   // DEV NOTES!

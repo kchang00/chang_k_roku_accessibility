@@ -25,12 +25,3 @@
     padding:2px 5px;
     border-radius:2px;
 }
-
-::cue {
-    color:#ccc;
-}
-
-::cue(v[voice='Test']) {
-    color:#fff;
-    background:#0095dd;
-}

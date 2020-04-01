@@ -1,0 +1,154 @@
+#audioControls {
+  display: flex;
+  background: $black;
+  justify-content: space-around;
+  opacity: 1;
+  transition: all 0.3s ease;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 0.5rem;
+  flex-wrap: wrap;
+
+  #audioPlayPause,
+  #audioMute{
+    img {
+      height: 3rem;
+    }
+  }
+
+  #audioTime{
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+  }
+
+  #audioTimeBar {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 1rem;
+    order: -1;
+    &::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 41.3px;
+        cursor: pointer;
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+        background: white;
+        border-radius: 2.9px;
+        border: 0.6px solid #000101;
+      }
+    &::-webkit-slider-thumb {
+        box-shadow: 0.3px 0.3px 2.2px #000000, 0px 0px 0.3px #0d0d0d;
+        border: 0px solid #000000;
+        height: 44px;
+        width: 25px;
+        border-radius: 3px;
+        background: $orange;
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -1.95px;
+      }
+      &:focus::-webkit-slider-runnable-track {
+        background: $grey;
+      }
+      &::-moz-range-track {
+        width: 100%;
+        height: 41.3px;
+        cursor: pointer;
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+        background: white;
+        border-radius: 2.9px;
+        border: 0.6px solid #000101;
+      }
+      &::-moz-range-thumb {
+        box-shadow: 0.3px 0.3px 2.2px #000000, 0px 0px 0.3px #0d0d0d;
+        border: 0px solid #000000;
+        height: 44px;
+        width: 25px;
+        border-radius: 3px;
+        background: $orange;
+        cursor: pointer;
+      }
+      &::-ms-track {
+        width: 100%;
+        height: 41.3px;
+        cursor: pointer;
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+      }
+      &::-ms-fill-lower {
+        background: white;
+        border: 0.6px solid #000101;
+        border-radius: 5.8px;
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+      }
+      &::-ms-fill-upper {
+        background:white;
+        border: 0.6px solid #000101;
+        border-radius: 5.8px;
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+      }
+      &::-ms-thumb {
+        box-shadow: 0.3px 0.3px 2.2px #000000, 0px 0px 0.3px #0d0d0d;
+        border: 0px solid #000000;
+        height: 44px;
+        width: 25px;
+        border-radius: 3px;
+        background: $orange;
+        cursor: pointer;
+        height: 41.3px;
+      }
+      &:focus::-ms-fill-lower {
+        background: white;
+      }
+      &:focus::-ms-fill-upper {
+        background: white;
+      }
+      
+  }
+}
+
+.transcript-btn {
+  background: $orange;
+  color: white;
+  padding: 1rem;
+  font-size: 1em;
+  margin:1rem;
+}
+
+.transcript {
+  margin: 1rem;
+  line-height: 1.5em;
+  p {
+    margin-bottom: 1em;
+  }
+}
+
+@media screen and (min-width: 964px) {
+    #audioControls{
+      padding: 2rem;
+      margin: 5rem;
+      flex-wrap: nowrap;
+      #audioPlayPause,
+      #audioMute{
+        img {
+          height: 35px;
+        }
+      }
+      #audioTime{
+        font-size: 1rem;
+      }
+
+      #audioTimeBar {
+        width: 70%;
+        order: initial;
+        margin: 0px 1rem;
+    } 
+  }
+  .transcript-btn {
+    margin:0rem 5rem;
+  }
+  .transcript {
+    margin: 5rem;
+  }
+}

@@ -8,6 +8,7 @@
   <title>Roku FlashBack</title>
 
   <link rel="stylesheet" href="css/reset.css">
+  <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
   <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -29,28 +30,34 @@
     <section class="video">
       <h2 class="hidden">Video Player</h2>
       <button class="videoOverlay" style="display: block; background-image: url('images/sound_of_music.jpg');">
-        <img src="images/ctrl_play.svg" alt="Play Button"/>
+        <img src="images/ctrl_play.svg" alt="Play/Pause Button"/>
       </button>
       <video tabindex="0" src="video/sound_of_music.mp4" muted>
         <track class="subtitles" label="English" kind="subtitles" srclang="en" src="captions/sound_of_music.vtt" default>
         <p>Your browser doesn't support this audio format.</p>
       </video>
       <!-- video controls -->
-      <div id="videoControls">
-        <input type="range" id="timeBar" value="0"/>
-        <button id="playPause">
+      <section id="videoControls">
+        <h3 class="hidden">Video Controls</h3>
+        <input 
+          type="range" 
+          id="videoTimeBar" 
+          value="0" 
+          data-media="audio"
+        />
+        <button id="videoPlayPause">
           <img
             src="images/ctrl_play.svg"
             alt="Play/Pause Button"
           />
         </button>
-        <div id="time"><span id="currentTime">0:00</span>/<span id="duration">0:00</span></div>
-        <button id="mute">
-          <img src="images/ctrl_muted.svg" alt="Mute Button"/>
+        <div id="videoTime"><span id="videoCurrentTime">0:00</span>/<span id="videoDuration">0:00</span></div>
+        <button id="videoMute">
+          <img src="images/ctrl_muted.svg" alt="Mute/Unmute Button"/>
         </button>
         <input
           type="range"
-          id="volumeBar"
+          id="videoVolumeBar"
           min="0"
           max="1"
           step="0.1"
@@ -63,7 +70,7 @@
           />
         </button>
         <button id="subtitles" data-state="subtitles">CC</button>
-      </div>
+      </section>
     </section>
     <section class="media-select">
       <h2>Recommended Music for You</h2>
@@ -74,58 +81,94 @@
     </section>
     <section class="audio">
       <h2 class="hidden">Audio Player</h2>
-      <audio controls>
+      <audio>
         <source src="audio/sound_of_silence.mp3" type="audio/mp3">
         <!-- <source src="audio/sound_of_silence.ogg" type="audio/ogg"> -->
         <p>Your browser doesn't support this audio format.</p>
       </audio>
-      <section class="transcript">
+      <!-- audio controls -->
+      <section id="audioControls">
+        <h3 class="hidden">Video Controls</h3>
+        <button id="audioPlayPause">
+          <img
+            src="images/ctrl_play.svg"
+            alt="Play/Pause Button"
+          />
+        </button>
+        <div id="audioTime"><span id="audioCurrentTime">0:00</span>/<span id="audioDuration">0:00</span></div>
+        <input type="range" id="audioTimeBar" value="0" />
+        <button id="audioMute">
+          <img src="images/ctrl_unmute.svg" alt="Mute/Unmute Button"/>
+        </button>
+        <input
+          type="range"
+          id="audioVolumeBar"
+          min="0"
+          max="1"
+          step="0.1"
+          value="1"
+        />
+      </section>
+      <button class="transcript-btn">Show Transcript</button>
+      <section class="transcript hidden">
         <h3 class="hidden">Transcript</h3>
-        <p>Hello darkness, my old friend
-          I've come to talk with you again
-          Because a vision softly creeping
-          Left its seeds while I was sleeping
-          And the vision that was planted in my brain
-          Still remains
-          Within the sound of silence
-          In restless dreams I walked alone
-          Narrow streets of cobblestone
-          'Neath the halo of a street lamp
-          I turned my collar to the cold and damp
-          When my eyes were stabbed by the flash of a neon light
-          That split the night
-          And touched the sound of silence
-          And in the naked light I saw
-          Ten thousand people, maybe more
-          People talking without speaking
-          People hearing without listening
-          People writing songs that voices never share
-          And no one dare
-          Disturb the sound of silence
-          "Fools" said I, "You do not know
-          Silence like a cancer grows
-          Hear my words that I might teach you
-          Take my arms that I might reach you"
-          But my words like silent raindrops fell
-          And echoed
-          In the wells of silence
-          And the people bowed and prayed
-          To the neon god they made
-          And the sign flashed out its warning
-          In the words that it was forming
-          And the sign said, "The words of the prophets
-          Are written on the subway walls
-          And tenement halls"
-          And whisper'd in the sounds of silence
-          Source: LyricFind
-          Songwriters: Paul Simon
-          The Sound of Silence lyrics © Universal Music Publishing Group</p>
+        <p>
+          Hello darkness, my old friend<br>
+          I've come to talk with you again<br>
+          Because a vision softly creeping<br>
+          Left its seeds while I was sleeping<br>
+          And the vision that was planted in my brain<br>
+          Still remains<br>
+          Within the sound of silence<br>
+        <p>
+        <p>
+          In restless dreams I walked alone<br>
+          Narrow streets of cobblestone<br>
+          'Neath the halo of a street lamp<br>
+          I turned my collar to the cold and damp<br>
+          When my eyes were stabbed by the flash of a neon light<br>
+          That split the night<br>
+          And touched the sound of silence<br>
+        </p>
+        <p>And in the naked light I saw<br>
+          Ten thousand people, maybe more<br>
+          People talking without speaking<br>
+          People hearing without listening<br>
+          People writing songs that voices never share<br>
+          And no one dare<br>
+          Disturb the sound of silence<br>
+        </p>
+        <p>
+          "Fools" said I, "You do not know<br>
+          Silence like a cancer grows<br>
+          Hear my words that I might teach you<br>
+          Take my arms that I might reach you"<br>
+          But my words like silent raindrops fell<br>
+          And echoed<br>
+          In the wells of silence<br>
+        </p>
+        <p>
+          And the people bowed and prayed<br>
+          To the neon god they made<br>
+          And the sign flashed out its warning<br>
+          In the words that it was forming<br>
+          And the sign said, "The words of the prophets<br>
+          Are written on the subway walls<br>
+          And tenement halls"<br>
+          And whisper'd in the sounds of silence<br>
+        </p>
+        <p>
+          Source: LyricFind<br>
+          Songwriters: Paul Simon<br>
+          The Sound of Silence lyrics © Universal Music Publishing Group
+        </p>
       </section>
     </section>
   </main>
 
   <footer>
     <h2 class="hidden">Footer</h2>
+    <p>© 2020 Roku Flashback</p>
   </footer>
 
   <script src="js/main.js"></script>
